@@ -57,6 +57,42 @@ class SinglyLinkedList {
 
     return current;
   }
+
+  shift() {
+    if (!this.head) {
+      return undefined;
+    }
+
+    let head = this.head;
+
+    if (!head.next) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+
+      return head;
+    }
+
+    this.head = head.next;
+    this.length -= 1;
+
+    return head;
+  }
+
+  unshift(value) {
+    const node = new Node(value);
+    const head = this.head;
+    node.next = head;
+    this.head = node;
+
+    if (this.length === 0) {
+      this.tail = node;
+    }
+
+    this.length += 1;
+
+    return this;
+  }
 }
 
 const list = new SinglyLinkedList();
