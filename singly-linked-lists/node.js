@@ -24,7 +24,7 @@ class SinglyLinkedList {
     }
 
     this.tail = node;
-    this.length += 1;
+    this.length++;
 
     return this;
   }
@@ -53,7 +53,7 @@ class SinglyLinkedList {
 
     pre.next = null;
     this.tail = pre;
-    this.length -= 1;
+    this.length--;
 
     return current;
   }
@@ -74,7 +74,7 @@ class SinglyLinkedList {
     }
 
     this.head = head.next;
-    this.length -= 1;
+    this.length--;
 
     return head;
   }
@@ -89,7 +89,7 @@ class SinglyLinkedList {
       this.tail = node;
     }
 
-    this.length += 1;
+    this.length++;
 
     return this;
   }
@@ -150,6 +150,31 @@ class SinglyLinkedList {
     this.length++;
 
     return true;
+  }
+
+  remove(index) {
+    const size = this.length;
+
+    if (index < 0 || size <= index) {
+      return undefined;
+    }
+
+    if (index === size - 1) {
+      return this.pop();
+    }
+
+    if (index === 0) {
+      return this.shift();
+    }
+
+    const node = this.get(index - 1);
+    const deletedNode = node.next;
+    const newNextNode = deletedNode.next;
+
+    node.next = newNextNode;
+    this.length--;
+
+    return deletedNode;
   }
 }
 
