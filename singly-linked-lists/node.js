@@ -101,15 +101,12 @@ class SinglyLinkedList {
       return null;
     }
 
-    const head = this.head;
-    let node;
+    let node = this.head;
+    let counter = 0;
 
-    for (let i = 0; i <= index; i++) {
-      if (i === 0) {
-        node = head;
-      } else {
-        node = node.next;
-      }
+    while (counter !== index) {
+      node = node.next;
+      counter++;
     }
 
     return node;
