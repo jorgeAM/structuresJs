@@ -93,6 +93,27 @@ class SinglyLinkedList {
 
     return this;
   }
+
+  get(index) {
+    const size = this.length;
+
+    if (index < 0 || size <= index) {
+      return null;
+    }
+
+    const head = this.head;
+    let node;
+
+    for (let i = 0; i <= index; i++) {
+      if (i === 0) {
+        node = head;
+      } else {
+        node = node.next;
+      }
+    }
+
+    return node;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -100,5 +121,4 @@ list.push(1);
 list.push(3);
 list.push(4);
 list.push(6);
-console.log(list);
-list.pop();
+list.get(2);
