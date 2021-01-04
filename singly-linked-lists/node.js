@@ -176,6 +176,27 @@ class SinglyLinkedList {
 
     return deletedNode;
   }
+
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let counter = 0;
+    const size = this.length;
+    let prev = null;
+    let next;
+
+    while (counter !== size) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+      counter++;
+    }
+
+    return this;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -183,5 +204,5 @@ list.push(1);
 list.push(3);
 list.push(4);
 list.push(6);
-list.get(2);
-list.insert(99, 1);
+
+console.log(list.reverse());
