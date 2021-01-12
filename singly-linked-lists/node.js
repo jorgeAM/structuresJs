@@ -127,7 +127,7 @@ class SinglyLinkedList {
   insert(value, index) {
     const size = this.length;
 
-    if (index < 0 || size <= index) {
+    if (index < 0 || size < index) {
       return false;
     }
 
