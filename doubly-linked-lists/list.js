@@ -157,6 +157,34 @@ class DoublyLinkedList {
 
     return true;
   }
+
+  remove(index) {
+    const size = this.length;
+
+    if (index < 0 || size <= index) {
+      return undefined;
+    }
+
+    if (index === 0) {
+      return this.shift();
+    }
+
+    if (index === size - 1) {
+      return this.pop();
+    }
+
+    const node = this.get(index);
+    const prev = node.prev;
+    const next = node.next;
+    prev.next = next;
+    next.prev = prev;
+    node.prev = null;
+    node.next = null;
+
+    this.length--;
+
+    return node;
+  }
 }
 
 const list = new DoublyLinkedList();
